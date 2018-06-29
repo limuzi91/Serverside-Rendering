@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import xssFilters from "xss-filters";
 import isURL from "validator/lib/isURL";
 import classnames from "classnames";
+import prependHttp from "prepend-http";
 
 const inputString = `javascript:alert("XSS attack!")`;
 
@@ -23,7 +24,7 @@ class UserHref extends Component {
           rendered result to see XSS attack in effect
         </p>
         <h5>{inputString}</h5>
-        <a target="_blank" href={this.state.link}>
+        <a target="_blank" href={prependHttp(this.state.link)}>
           {this.state.link}
         </a>
         <div className=" mb-3 mt-4" style={{ position: "relative" }}>
@@ -65,7 +66,7 @@ class UserHref extends Component {
         <h5>{inputString}</h5>
         <a
           target="_blank"
-          href={xssFilters.uriInUnQuotedAttr(this.state.linkTwo)}
+          href={prependHttp(xssFilters.uriInUnQuotedAttr(this.state.linkTwo))}
         >
           {xssFilters.uriInHTMLData(this.state.linkTwo)}
         </a>

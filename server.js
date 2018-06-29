@@ -461,7 +461,7 @@ var _renderer = __webpack_require__(15);
 
 var _renderer2 = _interopRequireDefault(_renderer);
 
-var _serverStore = __webpack_require__(47);
+var _serverStore = __webpack_require__(48);
 
 var _serverStore2 = _interopRequireDefault(_serverStore);
 
@@ -471,17 +471,17 @@ var _routes = __webpack_require__(10);
 
 var _routes2 = _interopRequireDefault(_routes);
 
-var _cors = __webpack_require__(54);
+var _cors = __webpack_require__(55);
 
 var _cors2 = _interopRequireDefault(_cors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //import rendererWithoutRedux from './helpers/renderer'
-const bodyParser = __webpack_require__(55);
+const bodyParser = __webpack_require__(56);
 //import { matchRoutes } from "react-router-config";
 
-const path = __webpack_require__(56);
+const path = __webpack_require__(57);
 
 const app = (0, _express2.default)();
 
@@ -584,7 +584,7 @@ var _routes = __webpack_require__(10);
 
 var _routes2 = _interopRequireDefault(_routes);
 
-var _assetManifest = __webpack_require__(46);
+var _assetManifest = __webpack_require__(47);
 
 var _assetManifest2 = _interopRequireDefault(_assetManifest);
 
@@ -2573,7 +2573,7 @@ var _UserHref = __webpack_require__(42);
 
 var _UserHref2 = _interopRequireDefault(_UserHref);
 
-var _ServerRedux = __webpack_require__(45);
+var _ServerRedux = __webpack_require__(46);
 
 var _ServerRedux2 = _interopRequireDefault(_ServerRedux);
 
@@ -3216,6 +3216,10 @@ var _classnames = __webpack_require__(12);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _prependHttp = __webpack_require__(45);
+
+var _prependHttp2 = _interopRequireDefault(_prependHttp);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const inputString = `javascript:alert("XSS attack!")`;
@@ -3233,7 +3237,7 @@ class UserHref extends _react.Component {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15
+          lineNumber: 16
         },
         __self: this
       },
@@ -3242,7 +3246,7 @@ class UserHref extends _react.Component {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 16
+            lineNumber: 17
           },
           __self: this
         },
@@ -3253,7 +3257,7 @@ class UserHref extends _react.Component {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 17
+            lineNumber: 18
           },
           __self: this
         },
@@ -3263,7 +3267,7 @@ class UserHref extends _react.Component {
         "p",
         { className: "text-muted", __source: {
             fileName: _jsxFileName,
-            lineNumber: 21
+            lineNumber: 22
           },
           __self: this
         },
@@ -3274,7 +3278,7 @@ class UserHref extends _react.Component {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 25
+            lineNumber: 26
           },
           __self: this
         },
@@ -3282,9 +3286,9 @@ class UserHref extends _react.Component {
       ),
       _react2.default.createElement(
         "a",
-        { target: "_blank", href: this.state.link, __source: {
+        { target: "_blank", href: (0, _prependHttp2.default)(this.state.link), __source: {
             fileName: _jsxFileName,
-            lineNumber: 26
+            lineNumber: 27
           },
           __self: this
         },
@@ -3294,7 +3298,7 @@ class UserHref extends _react.Component {
         "div",
         { className: " mb-3 mt-4", style: { position: "relative" }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 29
+            lineNumber: 30
           },
           __self: this
         },
@@ -3306,7 +3310,7 @@ class UserHref extends _react.Component {
           onChange: this.updatelink,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 30
+            lineNumber: 31
           },
           __self: this
         }),
@@ -3326,7 +3330,7 @@ class UserHref extends _react.Component {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 39
+              lineNumber: 40
             },
             __self: this
           },
@@ -3338,7 +3342,7 @@ class UserHref extends _react.Component {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 56
+            lineNumber: 57
           },
           __self: this
         },
@@ -3349,7 +3353,7 @@ class UserHref extends _react.Component {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 58
+              lineNumber: 59
             },
             __self: this
           },
@@ -3361,7 +3365,7 @@ class UserHref extends _react.Component {
         "p",
         { className: "text-muted", __source: {
             fileName: _jsxFileName,
-            lineNumber: 61
+            lineNumber: 62
           },
           __self: this
         },
@@ -3372,7 +3376,7 @@ class UserHref extends _react.Component {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 65
+            lineNumber: 66
           },
           __self: this
         },
@@ -3382,10 +3386,10 @@ class UserHref extends _react.Component {
         "a",
         {
           target: "_blank",
-          href: _xssFilters2.default.uriInUnQuotedAttr(this.state.linkTwo),
+          href: (0, _prependHttp2.default)(_xssFilters2.default.uriInUnQuotedAttr(this.state.linkTwo)),
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 66
+            lineNumber: 67
           },
           __self: this
         },
@@ -3395,7 +3399,7 @@ class UserHref extends _react.Component {
         "div",
         { className: " mb-3 mt-4", style: { position: "relative" }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 72
+            lineNumber: 73
           },
           __self: this
         },
@@ -3409,7 +3413,7 @@ class UserHref extends _react.Component {
           onChange: this.updatelinkTwo,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 73
+            lineNumber: 74
           },
           __self: this
         }),
@@ -3418,7 +3422,7 @@ class UserHref extends _react.Component {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 84
+              lineNumber: 85
             },
             __self: this
           },
@@ -3426,7 +3430,7 @@ class UserHref extends _react.Component {
             "small",
             { style: { color: "red", marginTop: 0 }, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 85
+                lineNumber: 86
               },
               __self: this
             },
@@ -3454,7 +3458,7 @@ class UserHref extends _react.Component {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 92
+              lineNumber: 93
             },
             __self: this
           },
@@ -3481,6 +3485,12 @@ module.exports = require("validator/lib/isURL");
 
 /***/ }),
 /* 45 */
+/***/ (function(module, exports) {
+
+module.exports = require("prepend-http");
+
+/***/ }),
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3629,13 +3639,13 @@ class ServerRedux extends _react.Component {
 exports.default = ServerRedux;
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports) {
 
 module.exports = {"main.css":"static/css/main.d78078a6.css","main.css.map":"static/css/main.d78078a6.css.map","main.js":"static/js/main.b2745fa5.js","main.js.map":"static/js/main.b2745fa5.js.map","static/js/0.0a7796f8.chunk.js":"static/js/0.0a7796f8.chunk.js","static/js/0.0a7796f8.chunk.js.map":"static/js/0.0a7796f8.chunk.js.map","static/js/1.50fc4a72.chunk.js":"static/js/1.50fc4a72.chunk.js","static/js/1.50fc4a72.chunk.js.map":"static/js/1.50fc4a72.chunk.js.map"}
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3645,25 +3655,25 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _redux = __webpack_require__(48);
+var _redux = __webpack_require__(49);
 
-var _reduxThunk = __webpack_require__(49);
+var _reduxThunk = __webpack_require__(50);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _java = __webpack_require__(50);
+var _java = __webpack_require__(51);
 
 var _java2 = _interopRequireDefault(_java);
 
-var _javascript = __webpack_require__(51);
+var _javascript = __webpack_require__(52);
 
 var _javascript2 = _interopRequireDefault(_javascript);
 
-var _searchTermFilter = __webpack_require__(52);
+var _searchTermFilter = __webpack_require__(53);
 
 var _searchTermFilter2 = _interopRequireDefault(_searchTermFilter);
 
-var _comments = __webpack_require__(53);
+var _comments = __webpack_require__(54);
 
 var _comments2 = _interopRequireDefault(_comments);
 
@@ -3687,19 +3697,19 @@ const serverStore = () => {
 exports.default = serverStore;
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-thunk");
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3741,7 +3751,7 @@ const reducer = (state = initialState, action) => {
 exports.default = reducer;
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3783,7 +3793,7 @@ const reducer = (state = initialState, action) => {
 exports.default = reducer;
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3821,7 +3831,7 @@ exports.default = (state = initialState, action) => {
 };
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3846,19 +3856,19 @@ exports.default = function (state = [], action) {
 var _actionTypes = __webpack_require__(1);
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports) {
 
 module.exports = require("cors");
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports) {
 
 module.exports = require("path");
