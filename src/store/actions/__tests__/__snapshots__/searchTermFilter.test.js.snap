@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test restFilters through the Snapshot approach 1`] = `
+Object {
+  "type": "RESET_FILTERS",
+}
+`;
+
+exports[`test setSearchTermFilter through the Snapshot approach 1`] = `
+Object {
+  "payload": "New York",
+  "type": "SET_TEXT_FILTER",
+}
+`;

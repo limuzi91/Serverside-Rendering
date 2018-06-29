@@ -1,0 +1,11 @@
+.landing__search .form-control:focus {
+  z-index: 3;
+}
+
+.is-invalid {
+  border: 1px solid red !important;
+}
+
+.round-border {
+  border-radius: 50%;
+}

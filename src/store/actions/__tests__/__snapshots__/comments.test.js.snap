@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test fetchCommentsSuccess through the Snapshot approach 1`] = `
+Object {
+  "payload": Array [
+    "comment 1",
+    "comment 2",
+  ],
+  "type": "FETCH_COMMENTS",
+}
+`;
