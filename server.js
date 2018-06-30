@@ -101,6 +101,12 @@ module.exports = require("react-redux");
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-dom");
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -171,7 +177,7 @@ Object.defineProperty(exports, "saveComment", {
 });
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -198,7 +204,7 @@ function fetchPopularRepos(language = "all") {
 }
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -215,12 +221,6 @@ exports.default = (array, searchTerm = "") => {
   }
   return reposArray.filter(item => `${item.name ? item.name : item} ${item.owner ? item.owner.login : " "} `.toUpperCase().indexOf(searchTerm.trim().toUpperCase()) >= 0);
 };
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-router-dom");
 
 /***/ }),
 /* 7 */
@@ -357,7 +357,7 @@ var _withAsyncRoute = __webpack_require__(35);
 
 var _withAsyncRoute2 = _interopRequireDefault(_withAsyncRoute);
 
-var _api = __webpack_require__(4);
+var _api = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -465,7 +465,7 @@ var _serverStore = __webpack_require__(48);
 
 var _serverStore2 = _interopRequireDefault(_serverStore);
 
-var _reactRouterDom = __webpack_require__(6);
+var _reactRouterDom = __webpack_require__(3);
 
 var _routes = __webpack_require__(10);
 
@@ -572,7 +572,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _server = __webpack_require__(16);
 
-var _reactRouterDom = __webpack_require__(6);
+var _reactRouterDom = __webpack_require__(3);
 
 var _reactRedux = __webpack_require__(2);
 
@@ -759,11 +759,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(6);
+var _reactRouterDom = __webpack_require__(3);
 
 var _reactRedux = __webpack_require__(2);
 
-var _index = __webpack_require__(3);
+var _index = __webpack_require__(4);
 
 var actions = _interopRequireWildcard(_index);
 
@@ -1072,7 +1072,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.serverFetchJava = exports.fetchJava = exports.fetchJavaSuccess = undefined;
 
-var _api = __webpack_require__(4);
+var _api = __webpack_require__(5);
 
 var _actionTypes = __webpack_require__(1);
 
@@ -1118,7 +1118,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.fetchJavascript = undefined;
 
-var _api = __webpack_require__(4);
+var _api = __webpack_require__(5);
 
 var _actionTypes = __webpack_require__(1);
 
@@ -1459,7 +1459,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _actions = __webpack_require__(3);
+var _actions = __webpack_require__(4);
 
 var actions = _interopRequireWildcard(_actions);
 
@@ -1469,7 +1469,7 @@ var _ListItem = __webpack_require__(8);
 
 var _ListItem2 = _interopRequireDefault(_ListItem);
 
-var _searchReposFilter = __webpack_require__(5);
+var _searchReposFilter = __webpack_require__(6);
 
 var _searchReposFilter2 = _interopRequireDefault(_searchReposFilter);
 
@@ -1674,7 +1674,7 @@ var _withLoadLocalData = __webpack_require__(27);
 
 var _withLoadLocalData2 = _interopRequireDefault(_withLoadLocalData);
 
-var _searchReposFilter = __webpack_require__(5);
+var _searchReposFilter = __webpack_require__(6);
 
 var _searchReposFilter2 = _interopRequireDefault(_searchReposFilter);
 
@@ -1825,7 +1825,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _api = __webpack_require__(4);
+var _api = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1937,7 +1937,7 @@ var _CommentList = __webpack_require__(32);
 
 var _CommentList2 = _interopRequireDefault(_CommentList);
 
-var _reactRouterDom = __webpack_require__(6);
+var _reactRouterDom = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2026,7 +2026,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _actions = __webpack_require__(3);
+var _actions = __webpack_require__(4);
 
 var actions = _interopRequireWildcard(_actions);
 
@@ -2153,7 +2153,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _searchReposFilter = __webpack_require__(5);
+var _searchReposFilter = __webpack_require__(6);
 
 var _searchReposFilter2 = _interopRequireDefault(_searchReposFilter);
 
@@ -2401,7 +2401,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _actions = __webpack_require__(3);
+var _actions = __webpack_require__(4);
 
 var actions = _interopRequireWildcard(_actions);
 
@@ -2411,7 +2411,7 @@ var _ListItem = __webpack_require__(8);
 
 var _ListItem2 = _interopRequireDefault(_ListItem);
 
-var _searchReposFilter = __webpack_require__(5);
+var _searchReposFilter = __webpack_require__(6);
 
 var _searchReposFilter2 = _interopRequireDefault(_searchReposFilter);
 
@@ -3536,9 +3536,25 @@ module.exports = require("validator/lib/isURL");
 
 /***/ }),
 /* 45 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("prepend-http");
+"use strict";
+
+
+module.exports = (url, opts) => {
+  if (typeof url !== "string") {
+    throw new TypeError(`Expected \`url\` to be of type \`string\`, got \`${typeof url}\``);
+  }
+
+  url = url.trim();
+  opts = Object.assign({ https: false }, opts);
+
+  if (/^\.*\/|^(?!localhost)\w+:/.test(url)) {
+    return url;
+  }
+
+  return url.replace(/^(?!(?:\w+:)?\/\/)/, opts.https ? "https://" : "http://");
+};
 
 /***/ }),
 /* 46 */

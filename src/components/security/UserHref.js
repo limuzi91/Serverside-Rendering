@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import xssFilters from "xss-filters";
 import isURL from "validator/lib/isURL";
 import classnames from "classnames";
-import prependHttp from "prepend-http";
+import prependHttp from "../../utils/prependHttp";
 
 const inputString = `javascript:alert("XSS attack!")`;
 
