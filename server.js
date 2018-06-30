@@ -542,8 +542,10 @@ app.get("*", (request, response, next) => {
   });
 });
 
-app.listen(5000, () => {
-  console.log(`Server is listening on port: 5000`);
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port: ${PORT}`);
 });
 
 /***/ }),
@@ -1267,10 +1269,33 @@ class HomePage extends _react.Component {
           __self: this
         },
         _react2.default.createElement(
+          "p",
+          { className: "text-center", __source: {
+              fileName: _jsxFileName,
+              lineNumber: 25
+            },
+            __self: this
+          },
+          _react2.default.createElement(
+            "a",
+            {
+              href: "https://github.com/limuzi91/Serverside-Rendering",
+              target: "_blank",
+              className: "btn btn-primary",
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 26
+              },
+              __self: this
+            },
+            "View Source Code"
+          )
+        ),
+        _react2.default.createElement(
           "h3",
           { className: "font-weight-light mb-1", __source: {
               fileName: _jsxFileName,
-              lineNumber: 25
+              lineNumber: 34
             },
             __self: this
           },
@@ -1280,7 +1305,7 @@ class HomePage extends _react.Component {
           "h4",
           { className: "display-4 mb-5", __source: {
               fileName: _jsxFileName,
-              lineNumber: 26
+              lineNumber: 35
             },
             __self: this
           },
@@ -1289,7 +1314,7 @@ class HomePage extends _react.Component {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 27
+                lineNumber: 36
               },
               __self: this
             },
@@ -1300,7 +1325,7 @@ class HomePage extends _react.Component {
           "div",
           { className: "card bg-light text-dark col-md-8 mx-auto", __source: {
               fileName: _jsxFileName,
-              lineNumber: 32
+              lineNumber: 41
             },
             __self: this
           },
@@ -1308,7 +1333,7 @@ class HomePage extends _react.Component {
             "div",
             { className: "card-body", __source: {
                 fileName: _jsxFileName,
-                lineNumber: 33
+                lineNumber: 42
               },
               __self: this
             },
@@ -1316,17 +1341,17 @@ class HomePage extends _react.Component {
               "h4",
               { className: "font-weight-light mb-3", __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 34
+                  lineNumber: 43
                 },
                 __self: this
               },
-              "Click navtab or enter a language to aearch"
+              "Click navtab or enter a language to search"
             ),
             _react2.default.createElement(
               "form",
               { onSubmit: this.goToSearch, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 37
+                  lineNumber: 46
                 },
                 __self: this
               },
@@ -1337,7 +1362,7 @@ class HomePage extends _react.Component {
                   style: { position: "relative" },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 38
+                    lineNumber: 47
                   },
                   __self: this
                 },
@@ -1345,7 +1370,7 @@ class HomePage extends _react.Component {
                   "div",
                   { className: "input-group mb-3", __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 42
+                      lineNumber: 51
                     },
                     __self: this
                   },
@@ -1354,10 +1379,10 @@ class HomePage extends _react.Component {
                     className: "form-control",
                     value: this.state.language,
                     onChange: this.updateInput,
-                    placeholder: "Search popular language in github",
+                    placeholder: "Search popular repos in github of any language",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 43
+                      lineNumber: 52
                     },
                     __self: this
                   }),
@@ -1365,7 +1390,7 @@ class HomePage extends _react.Component {
                     "div",
                     { className: "input-group-append", __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 50
+                        lineNumber: 59
                       },
                       __self: this
                     },
@@ -1373,7 +1398,7 @@ class HomePage extends _react.Component {
                       "button",
                       { className: "btn btn-primary", type: "submit", __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 51
+                          lineNumber: 60
                         },
                         __self: this
                       },
@@ -1397,7 +1422,7 @@ class HomePage extends _react.Component {
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 57
+                      lineNumber: 66
                     },
                     __self: this
                   },
@@ -1912,6 +1937,8 @@ var _CommentList = __webpack_require__(32);
 
 var _CommentList2 = _interopRequireDefault(_CommentList);
 
+var _reactRouterDom = __webpack_require__(6);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = () => {
@@ -1920,7 +1947,7 @@ exports.default = () => {
     {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 7
+        lineNumber: 8
       },
       __self: undefined
     },
@@ -1928,29 +1955,53 @@ exports.default = () => {
       "h2",
       { style: { margin: "40px 0" }, __source: {
           fileName: _jsxFileName,
-          lineNumber: 8
+          lineNumber: 9
         },
         __self: undefined
       },
       "2. Testing Demo"
     ),
+    _react2.default.createElement(
+      "p",
+      {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 10
+        },
+        __self: undefined
+      },
+      _react2.default.createElement(
+        "a",
+        {
+          href: "https://github.com/limuzi91/Serverside-Rendering",
+          target: "_blank",
+          className: "btn btn-primary",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 11
+          },
+          __self: undefined
+        },
+        "View Source Code"
+      )
+    ),
     _react2.default.createElement(_CommentBox2.default, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 9
+        lineNumber: 20
       },
       __self: undefined
     }),
     _react2.default.createElement(_CommentList2.default, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 10
+        lineNumber: 21
       },
       __self: undefined
     }),
     _react2.default.createElement("div", { style: { height: 100 }, __source: {
         fileName: _jsxFileName,
-        lineNumber: 11
+        lineNumber: 22
       },
       __self: undefined
     })

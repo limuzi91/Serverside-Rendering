@@ -22,6 +22,15 @@ class HomePage extends Component {
         style={{ minHeight: "100vh" }}
       >
         <div>
+          <p className="text-center">
+            <a
+              href="https://github.com/limuzi91/Serverside-Rendering"
+              target="_blank"
+              className="btn btn-primary"
+            >
+              View Source Code
+            </a>
+          </p>
           <h3 className="font-weight-light mb-1">A Demo project that shows</h3>
           <h4 className="display-4 mb-5">
             <small>
@@ -32,7 +41,7 @@ class HomePage extends Component {
           <div className="card bg-light text-dark col-md-8 mx-auto">
             <div className="card-body">
               <h4 className="font-weight-light mb-3">
-                Click navtab or enter a language to aearch
+                Click navtab or enter a language to search
               </h4>
               <form onSubmit={this.goToSearch}>
                 <div
@@ -45,7 +54,7 @@ class HomePage extends Component {
                       className="form-control"
                       value={this.state.language}
                       onChange={this.updateInput}
-                      placeholder="Search popular language in github"
+                      placeholder="Search popular repos in github of any language"
                     />
                     <div className="input-group-append">
                       <button className="btn btn-primary" type="submit">
