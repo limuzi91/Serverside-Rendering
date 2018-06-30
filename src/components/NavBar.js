@@ -70,7 +70,7 @@ class NavBar extends Component {
                   activeStyle={{ color: "white" }}
                   to="/java"
                 >
-                  Java(AsyncRoute/CodeSplit)
+                  Java<small>(AsyncRoute/CodeSplit)</small>
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -79,7 +79,7 @@ class NavBar extends Component {
                   activeStyle={{ color: "white" }}
                   to="/xss"
                 >
-                  XssAttack
+                  XssAttack<small>(AsyncRoute/CodeSplit)</small>
                 </NavLink>
               </li>
               <li className="nav-item">

@@ -18,11 +18,6 @@ export default (request, store, context, localState) => {
     </Provider>
   );
 
-  const obj = {
-    "/java": "popular java repos",
-    "/javascript": "popular javascript repos"
-  };
-
   const helmet = Helmet.renderStatic();
 
   const pageHtml = `
@@ -32,13 +27,12 @@ export default (request, store, context, localState) => {
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="theme-color" content="#000000">
-      <meta name="keywords" content="React,Redux,SSR,React-router,Socket.io" />
+      <meta name="keywords" content="React,Redux,SSR,React-router,Socket.io" >
       <meta name="author" content="Michael Li" >
       ${helmet.title.toString()}
       ${helmet.meta.toString()}
-      <meta name="description" content="${obj[request.url]}" />
       <link rel="stylesheet" href="/${staticPath["main.css"]}">
-      <title>React App</title>  
+      
     </head>
     <body>
       <div id="root">${markup}</div>

@@ -97,16 +97,22 @@ const FETCH_COMMENTS = exports.FETCH_COMMENTS = "FETCH_COMMENTS";
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-redux");
+module.exports = require("react-helmet");
 
 /***/ }),
 /* 3 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-dom");
+module.exports = require("react-redux");
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-dom");
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -177,7 +183,7 @@ Object.defineProperty(exports, "saveComment", {
 });
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -204,7 +210,7 @@ function fetchPopularRepos(language = "all") {
 }
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -221,12 +227,6 @@ exports.default = (array, searchTerm = "") => {
   }
   return reposArray.filter(item => `${item.name ? item.name : item} ${item.owner ? item.owner.login : " "} `.toUpperCase().indexOf(searchTerm.trim().toUpperCase()) >= 0);
 };
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-helmet");
 
 /***/ }),
 /* 8 */
@@ -357,7 +357,7 @@ var _withAsyncRoute = __webpack_require__(35);
 
 var _withAsyncRoute2 = _interopRequireDefault(_withAsyncRoute);
 
-var _api = __webpack_require__(5);
+var _api = __webpack_require__(6);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -465,7 +465,7 @@ var _serverStore = __webpack_require__(48);
 
 var _serverStore2 = _interopRequireDefault(_serverStore);
 
-var _reactRouterDom = __webpack_require__(3);
+var _reactRouterDom = __webpack_require__(4);
 
 var _routes = __webpack_require__(10);
 
@@ -477,7 +477,6 @@ var _cors2 = _interopRequireDefault(_cors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//import rendererWithoutRedux from './helpers/renderer'
 const bodyParser = __webpack_require__(56);
 //import { matchRoutes } from "react-router-config";
 
@@ -542,7 +541,7 @@ app.get("*", (request, response, next) => {
   });
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log(`Server is listening on port: ${port}`);
@@ -572,9 +571,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _server = __webpack_require__(16);
 
-var _reactRouterDom = __webpack_require__(3);
+var _reactRouterDom = __webpack_require__(4);
 
-var _reactRedux = __webpack_require__(2);
+var _reactRedux = __webpack_require__(3);
 
 var _serializeJavascript = __webpack_require__(17);
 
@@ -590,7 +589,7 @@ var _assetManifest = __webpack_require__(47);
 
 var _assetManifest2 = _interopRequireDefault(_assetManifest);
 
-var _reactHelmet = __webpack_require__(7);
+var _reactHelmet = __webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -626,11 +625,6 @@ exports.default = (request, store, context, localState) => {
     )
   ));
 
-  const obj = {
-    "/java": "popular java repos",
-    "/javascript": "popular javascript repos"
-  };
-
   const helmet = _reactHelmet.Helmet.renderStatic();
 
   const pageHtml = `
@@ -640,13 +634,12 @@ exports.default = (request, store, context, localState) => {
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="theme-color" content="#000000">
-      <meta name="keywords" content="React,Redux,SSR,React-router,Socket.io" />
+      <meta name="keywords" content="React,Redux,SSR,React-router,Socket.io" >
       <meta name="author" content="Michael Li" >
       ${helmet.title.toString()}
       ${helmet.meta.toString()}
-      <meta name="description" content="${obj[request.url]}" />
       <link rel="stylesheet" href="/${_assetManifest2.default["main.css"]}">
-      <title>React App</title>  
+      
     </head>
     <body>
       <div id="root">${markup}</div>
@@ -759,11 +752,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(3);
+var _reactRouterDom = __webpack_require__(4);
 
-var _reactRedux = __webpack_require__(2);
+var _reactRedux = __webpack_require__(3);
 
-var _index = __webpack_require__(4);
+var _index = __webpack_require__(5);
 
 var actions = _interopRequireWildcard(_index);
 
@@ -922,7 +915,18 @@ class NavBar extends _react.Component {
                   },
                   __self: this
                 },
-                "Java(AsyncRoute/CodeSplit)"
+                "Java",
+                _react2.default.createElement(
+                  "small",
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 73
+                    },
+                    __self: this
+                  },
+                  "(AsyncRoute/CodeSplit)"
+                )
               )
             ),
             _react2.default.createElement(
@@ -945,7 +949,18 @@ class NavBar extends _react.Component {
                   },
                   __self: this
                 },
-                "XssAttack"
+                "XssAttack",
+                _react2.default.createElement(
+                  "small",
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 82
+                    },
+                    __self: this
+                  },
+                  "(AsyncRoute/CodeSplit)"
+                )
               )
             ),
             _react2.default.createElement(
@@ -1072,7 +1087,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.serverFetchJava = exports.fetchJava = exports.fetchJavaSuccess = undefined;
 
-var _api = __webpack_require__(5);
+var _api = __webpack_require__(6);
 
 var _actionTypes = __webpack_require__(1);
 
@@ -1118,7 +1133,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.fetchJavascript = undefined;
 
-var _api = __webpack_require__(5);
+var _api = __webpack_require__(6);
 
 var _actionTypes = __webpack_require__(1);
 
@@ -1230,6 +1245,8 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactHelmet = __webpack_require__(2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class HomePage extends _react.Component {
@@ -1244,6 +1261,46 @@ class HomePage extends _react.Component {
       event.preventDefault();
 
       this.props.history.push(`/search/${encodeURIComponent(this.state.language.trim())}`);
+    }, this.head = () => {
+      return _react2.default.createElement(
+        _reactHelmet.Helmet,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 21
+          },
+          __self: this
+        },
+        _react2.default.createElement(
+          "title",
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 22
+            },
+            __self: this
+          },
+          "SSR Demo App"
+        ),
+        _react2.default.createElement("meta", {
+          property: "og:title",
+          content: "A demo app of Serverside Rendering and other topics",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 23
+          },
+          __self: this
+        }),
+        _react2.default.createElement("meta", {
+          name: "description",
+          content: `A Demo project that showcases Serverside Rendering + ServerSide Redux + CodeSplitting / LazyLoading + SEO + Security + Testing`,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 27
+          },
+          __self: this
+        })
+      );
     }, _temp;
   }
 
@@ -1251,188 +1308,205 @@ class HomePage extends _react.Component {
     return _react2.default.createElement(
       "div",
       {
-        className: "container text-center d-flex align-items-center justify-content-center",
-        style: { minHeight: "100vh" },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 37
         },
         __self: this
       },
+      this.head(),
       _react2.default.createElement(
         "div",
         {
+          className: "container text-center d-flex align-items-center justify-content-center",
+          style: { minHeight: "100vh", marginTop: "-100px" },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 24
+            lineNumber: 39
           },
           __self: this
         },
         _react2.default.createElement(
-          "p",
-          { className: "text-center", __source: {
-              fileName: _jsxFileName,
-              lineNumber: 25
-            },
-            __self: this
-          },
-          _react2.default.createElement(
-            "a",
-            {
-              href: "https://github.com/limuzi91/Serverside-Rendering",
-              target: "_blank",
-              className: "btn btn-primary",
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 26
-              },
-              __self: this
-            },
-            "View Source Code"
-          )
-        ),
-        _react2.default.createElement(
-          "h3",
-          { className: "font-weight-light mb-1", __source: {
-              fileName: _jsxFileName,
-              lineNumber: 34
-            },
-            __self: this
-          },
-          "A Demo project that shows"
-        ),
-        _react2.default.createElement(
-          "h4",
-          { className: "display-4 mb-5", __source: {
-              fileName: _jsxFileName,
-              lineNumber: 35
-            },
-            __self: this
-          },
-          _react2.default.createElement(
-            "small",
-            {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 36
-              },
-              __self: this
-            },
-            "Server Rendering + ServerSide Redux + CodeSplitting / LazyLoading + SEO + Security + Testing"
-          )
-        ),
-        _react2.default.createElement(
           "div",
-          { className: "card bg-light text-dark col-md-8 mx-auto", __source: {
+          {
+            __source: {
               fileName: _jsxFileName,
-              lineNumber: 41
+              lineNumber: 43
             },
             __self: this
           },
           _react2.default.createElement(
-            "div",
-            { className: "card-body", __source: {
+            "h4",
+            { className: "font-weight-light", __source: {
                 fileName: _jsxFileName,
-                lineNumber: 42
+                lineNumber: 44
+              },
+              __self: this
+            },
+            "A Demo project that showcases"
+          ),
+          _react2.default.createElement(
+            "h4",
+            { className: "display-4 mb-5", __source: {
+                fileName: _jsxFileName,
+                lineNumber: 45
               },
               __self: this
             },
             _react2.default.createElement(
-              "h4",
-              { className: "font-weight-light mb-3", __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 43
-                },
-                __self: this
-              },
-              "Click navtab or enter a language to search"
-            ),
-            _react2.default.createElement(
-              "form",
-              { onSubmit: this.goToSearch, __source: {
+              "small",
+              {
+                __source: {
                   fileName: _jsxFileName,
                   lineNumber: 46
                 },
                 __self: this
               },
+              "Serverside Rendering + ServerSide Redux + CodeSplitting / LazyLoading + SEO + Security + Testing"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "card bg-light text-dark col-md-8 mx-auto", __source: {
+                fileName: _jsxFileName,
+                lineNumber: 51
+              },
+              __self: this
+            },
+            _react2.default.createElement(
+              "div",
+              { className: "card-body", __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 52
+                },
+                __self: this
+              },
               _react2.default.createElement(
-                "div",
-                {
-                  className: "landing__search",
-                  style: { position: "relative" },
-                  __source: {
+                "h4",
+                { className: "font-weight-light mb-3", __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 47
+                    lineNumber: 53
+                  },
+                  __self: this
+                },
+                "Click NavTab or enter a language to search"
+              ),
+              _react2.default.createElement(
+                "form",
+                { onSubmit: this.goToSearch, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 56
                   },
                   __self: this
                 },
                 _react2.default.createElement(
                   "div",
-                  { className: "input-group mb-3", __source: {
+                  {
+                    className: "landing__search",
+                    style: { position: "relative" },
+                    __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 51
+                      lineNumber: 57
                     },
                     __self: this
                   },
-                  _react2.default.createElement("input", {
-                    type: "text",
-                    className: "form-control",
-                    value: this.state.language,
-                    onChange: this.updateInput,
-                    placeholder: "Search popular repos in github of any language",
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 52
-                    },
-                    __self: this
-                  }),
                   _react2.default.createElement(
                     "div",
-                    { className: "input-group-append", __source: {
+                    { className: "input-group mb-3", __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 59
+                        lineNumber: 61
                       },
                       __self: this
                     },
+                    _react2.default.createElement("input", {
+                      type: "text",
+                      className: "form-control",
+                      value: this.state.language,
+                      onChange: this.updateInput,
+                      placeholder: "Search popular repos in github of any language",
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 62
+                      },
+                      __self: this
+                    }),
                     _react2.default.createElement(
-                      "button",
-                      { className: "btn btn-primary", type: "submit", __source: {
+                      "div",
+                      { className: "input-group-append", __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 60
+                          lineNumber: 69
                         },
                         __self: this
                       },
-                      "Go"
+                      _react2.default.createElement(
+                        "button",
+                        { className: "btn btn-primary", type: "submit", __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 70
+                          },
+                          __self: this
+                        },
+                        "Go"
+                      )
                     )
-                  )
-                ),
-                this.state.language ? _react2.default.createElement(
-                  "span",
-                  {
-                    onClick: () => {
-                      this.setState({ language: "" });
+                  ),
+                  this.state.language ? _react2.default.createElement(
+                    "span",
+                    {
+                      onClick: () => {
+                        this.setState({ language: "" });
+                      },
+                      className: "text-muted",
+                      style: {
+                        position: "absolute",
+                        top: 5,
+                        right: 60,
+                        cursor: "pointer",
+                        zIndex: 4
+                      },
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 76
+                      },
+                      __self: this
                     },
-                    className: "text-muted",
-                    style: {
-                      position: "absolute",
-                      top: 5,
-                      right: 60,
-                      cursor: "pointer",
-                      zIndex: 4
-                    },
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 66
-                    },
-                    __self: this
-                  },
-                  "x"
-                ) : null
+                    "x"
+                  ) : null
+                )
               )
+            )
+          ),
+          _react2.default.createElement(
+            "p",
+            { className: "text-center mt-5", __source: {
+                fileName: _jsxFileName,
+                lineNumber: 97
+              },
+              __self: this
+            },
+            _react2.default.createElement(
+              "a",
+              {
+                href: "https://github.com/limuzi91/Serverside-Rendering",
+                target: "_blank",
+                className: "btn btn-primary",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 98
+                },
+                __self: this
+              },
+              "View Source Code"
             )
           )
         )
-      )
+      ),
+      _react2.default.createElement("div", { style: { height: 200 }, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 108
+        },
+        __self: this
+      })
     );
   }
 }
@@ -1457,19 +1531,19 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(2);
+var _reactRedux = __webpack_require__(3);
 
-var _actions = __webpack_require__(4);
+var _actions = __webpack_require__(5);
 
 var actions = _interopRequireWildcard(_actions);
 
-var _reactHelmet = __webpack_require__(7);
+var _reactHelmet = __webpack_require__(2);
 
 var _ListItem = __webpack_require__(8);
 
 var _ListItem2 = _interopRequireDefault(_ListItem);
 
-var _searchReposFilter = __webpack_require__(6);
+var _searchReposFilter = __webpack_require__(7);
 
 var _searchReposFilter2 = _interopRequireDefault(_searchReposFilter);
 
@@ -1674,11 +1748,11 @@ var _withLoadLocalData = __webpack_require__(27);
 
 var _withLoadLocalData2 = _interopRequireDefault(_withLoadLocalData);
 
-var _searchReposFilter = __webpack_require__(6);
+var _searchReposFilter = __webpack_require__(7);
 
 var _searchReposFilter2 = _interopRequireDefault(_searchReposFilter);
 
-var _reactRedux = __webpack_require__(2);
+var _reactRedux = __webpack_require__(3);
 
 var _ListItem = __webpack_require__(8);
 
@@ -1688,6 +1762,8 @@ var _isBrowser = __webpack_require__(28);
 
 var _isBrowser2 = _interopRequireDefault(_isBrowser);
 
+var _reactHelmet = __webpack_require__(2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const mapStateToProps = state => Object.assign({}, state.searchTermFilter);
@@ -1695,6 +1771,39 @@ const mapStateToProps = state => Object.assign({}, state.searchTermFilter);
 class SearchPage extends _react.Component {
   constructor(props) {
     super(props);
+
+    this.head = () => {
+      return _react2.default.createElement(
+        _reactHelmet.Helmet,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 48
+          },
+          __self: this
+        },
+        _react2.default.createElement(
+          "title",
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 49
+            },
+            __self: this
+          },
+          `${this.state.repos.length} ${this.props.match.params.id} repos Loaded`
+        ),
+        _react2.default.createElement("meta", {
+          property: "og:title",
+          content: `Popular ${this.props.match.params.id} repos on github`,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 52
+          },
+          __self: this
+        })
+      );
+    };
 
     let repos;
     if (_isBrowser2.default) {
@@ -1722,6 +1831,7 @@ class SearchPage extends _react.Component {
       })));
     }
   }
+
   render() {
     const loading = this.state.loading;
 
@@ -1733,7 +1843,7 @@ class SearchPage extends _react.Component {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 49
+            lineNumber: 65
           },
           __self: this
         },
@@ -1746,7 +1856,7 @@ class SearchPage extends _react.Component {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 52
+            lineNumber: 68
           },
           __self: this
         },
@@ -1758,15 +1868,16 @@ class SearchPage extends _react.Component {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 71
         },
         __self: this
       },
+      this.head(),
       _react2.default.createElement(
         "div",
         { className: "container", __source: {
             fileName: _jsxFileName,
-            lineNumber: 56
+            lineNumber: 73
           },
           __self: this
         },
@@ -1774,7 +1885,7 @@ class SearchPage extends _react.Component {
           "h3",
           { style: { textAlign: "center", marginTop: 30 }, __source: {
               fileName: _jsxFileName,
-              lineNumber: 57
+              lineNumber: 74
             },
             __self: this
           },
@@ -1786,7 +1897,7 @@ class SearchPage extends _react.Component {
           "ul",
           { style: { display: "flex", flexWrap: "wrap" }, __source: {
               fileName: _jsxFileName,
-              lineNumber: 61
+              lineNumber: 78
             },
             __self: this
           },
@@ -1798,7 +1909,7 @@ class SearchPage extends _react.Component {
             html_url: html_url,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 63
+              lineNumber: 80
             },
             __self: this
           }))
@@ -1825,7 +1936,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _api = __webpack_require__(5);
+var _api = __webpack_require__(6);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1882,32 +1993,91 @@ var _Intro = __webpack_require__(33);
 
 var _Intro2 = _interopRequireDefault(_Intro);
 
+var _reactHelmet = __webpack_require__(2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class TestingPage extends _react.Component {
+  constructor(...args) {
+    var _temp;
+
+    return _temp = super(...args), this.head = () => {
+      return _react2.default.createElement(
+        _reactHelmet.Helmet,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 9
+          },
+          __self: this
+        },
+        _react2.default.createElement(
+          "title",
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 10
+            },
+            __self: this
+          },
+          "React Testing"
+        ),
+        _react2.default.createElement("meta", {
+          property: "og:title",
+          content: "React Testing Design and Source Code for Demo Test Case",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 11
+          },
+          __self: this
+        }),
+        _react2.default.createElement("meta", {
+          name: "description",
+          content: `React Testing Design and Source Code for Demo Test Case`,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 15
+          },
+          __self: this
+        })
+      );
+    }, _temp;
+  }
+
   render() {
     return _react2.default.createElement(
       "div",
-      { className: "container", __source: {
+      {
+        __source: {
           fileName: _jsxFileName,
-          lineNumber: 8
+          lineNumber: 24
         },
         __self: this
       },
-      _react2.default.createElement(_Intro2.default, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 9
+      this.head(),
+      _react2.default.createElement(
+        "div",
+        { className: "container", __source: {
+            fileName: _jsxFileName,
+            lineNumber: 26
+          },
+          __self: this
         },
-        __self: this
-      }),
-      _react2.default.createElement(_App2.default, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 10
-        },
-        __self: this
-      })
+        _react2.default.createElement(_Intro2.default, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 27
+          },
+          __self: this
+        }),
+        _react2.default.createElement(_App2.default, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 28
+          },
+          __self: this
+        })
+      )
     );
   }
 }
@@ -1937,7 +2107,7 @@ var _CommentList = __webpack_require__(32);
 
 var _CommentList2 = _interopRequireDefault(_CommentList);
 
-var _reactRouterDom = __webpack_require__(3);
+var _reactRouterDom = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2024,9 +2194,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(2);
+var _reactRedux = __webpack_require__(3);
 
-var _actions = __webpack_require__(4);
+var _actions = __webpack_require__(5);
 
 var actions = _interopRequireWildcard(_actions);
 
@@ -2151,9 +2321,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(2);
+var _reactRedux = __webpack_require__(3);
 
-var _searchReposFilter = __webpack_require__(6);
+var _searchReposFilter = __webpack_require__(7);
 
 var _searchReposFilter2 = _interopRequireDefault(_searchReposFilter);
 
@@ -2272,37 +2442,78 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactHelmet = __webpack_require__(2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const NotFoundPage = ({ staticContext = {} }) => {
   staticContext.notFound = true;
-  return _react2.default.createElement(
-    "div",
-    { className: "container text-center", __source: {
+
+  const head = _react2.default.createElement(
+    _reactHelmet.Helmet,
+    {
+      __source: {
         fileName: _jsxFileName,
-        lineNumber: 6
+        lineNumber: 8
       },
       __self: undefined
     },
     _react2.default.createElement(
-      "h1",
-      { className: "mt-5", __source: {
+      "title",
+      {
+        __source: {
           fileName: _jsxFileName,
-          lineNumber: 7
+          lineNumber: 9
         },
         __self: undefined
       },
-      `Ooops :( `
+      "404 Not Found"
     ),
+    _react2.default.createElement("meta", { name: "description", content: `Resource Not Found`, __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11
+      },
+      __self: undefined
+    })
+  );
+  return _react2.default.createElement(
+    "div",
+    {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15
+      },
+      __self: undefined
+    },
+    head,
     _react2.default.createElement(
-      "p",
-      { className: "", __source: {
+      "div",
+      { className: "container text-center", __source: {
           fileName: _jsxFileName,
-          lineNumber: 8
+          lineNumber: 17
         },
         __self: undefined
       },
-      `route not found (404)...`
+      _react2.default.createElement(
+        "h1",
+        { className: "mt-5", __source: {
+            fileName: _jsxFileName,
+            lineNumber: 18
+          },
+          __self: undefined
+        },
+        `Ooops :( `
+      ),
+      _react2.default.createElement(
+        "p",
+        { className: "", __source: {
+            fileName: _jsxFileName,
+            lineNumber: 19
+          },
+          __self: undefined
+        },
+        `route not found (404)...`
+      )
     )
   );
 };
@@ -2399,19 +2610,19 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(2);
+var _reactRedux = __webpack_require__(3);
 
-var _actions = __webpack_require__(4);
+var _actions = __webpack_require__(5);
 
 var actions = _interopRequireWildcard(_actions);
 
-var _reactHelmet = __webpack_require__(7);
+var _reactHelmet = __webpack_require__(2);
 
 var _ListItem = __webpack_require__(8);
 
 var _ListItem2 = _interopRequireDefault(_ListItem);
 
-var _searchReposFilter = __webpack_require__(6);
+var _searchReposFilter = __webpack_require__(7);
 
 var _searchReposFilter2 = _interopRequireDefault(_searchReposFilter);
 
@@ -2628,23 +2839,72 @@ var _ServerRedux = __webpack_require__(46);
 
 var _ServerRedux2 = _interopRequireDefault(_ServerRedux);
 
+var _reactHelmet = __webpack_require__(2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class XssPage extends _react.Component {
+  constructor(...args) {
+    var _temp;
+
+    return _temp = super(...args), this.head = () => {
+      return _react2.default.createElement(
+        _reactHelmet.Helmet,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 12
+          },
+          __self: this
+        },
+        _react2.default.createElement(
+          "title",
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 13
+            },
+            __self: this
+          },
+          "React Security"
+        ),
+        _react2.default.createElement("meta", {
+          property: "og:title",
+          content: "How to prevent XSS attack in React",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 14
+          },
+          __self: this
+        }),
+        _react2.default.createElement("meta", {
+          name: "description",
+          content: `React Security: How to prevent XSS attack in React`,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 18
+          },
+          __self: this
+        })
+      );
+    }, _temp;
+  }
+
   render() {
     return _react2.default.createElement(
       "div",
       { className: "container", __source: {
           fileName: _jsxFileName,
-          lineNumber: 11
+          lineNumber: 27
         },
         __self: this
       },
+      this.head(),
       _react2.default.createElement(
         "h2",
         { className: "mt-4", __source: {
             fileName: _jsxFileName,
-            lineNumber: 12
+            lineNumber: 29
           },
           __self: this
         },
@@ -2653,76 +2913,76 @@ class XssPage extends _react.Component {
       _react2.default.createElement("hr", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13
+          lineNumber: 30
         },
         __self: this
       }),
       _react2.default.createElement(_EscapeInput2.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14
+          lineNumber: 31
         },
         __self: this
       }),
       _react2.default.createElement("hr", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15
+          lineNumber: 32
         },
         __self: this
       }),
       _react2.default.createElement(_DangerousHTML2.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 16
+          lineNumber: 33
         },
         __self: this
       }),
       _react2.default.createElement("hr", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 17
+          lineNumber: 34
         },
         __self: this
       }),
       _react2.default.createElement(_SanitizeCode2.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 18
+          lineNumber: 35
         },
         __self: this
       }),
       _react2.default.createElement("hr", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 19
+          lineNumber: 36
         },
         __self: this
       }),
       _react2.default.createElement(_UserHref2.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 37
         },
         __self: this
       }),
       _react2.default.createElement("hr", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 38
         },
         __self: this
       }),
       _react2.default.createElement(_ServerRedux2.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 39
         },
         __self: this
       }),
       _react2.default.createElement("div", { style: { minHeight: 300 }, __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 40
         },
         __self: this
       })
@@ -3709,7 +3969,7 @@ exports.default = ServerRedux;
 /* 47 */
 /***/ (function(module, exports) {
 
-module.exports = {"main.css":"static/css/main.d78078a6.css","main.css.map":"static/css/main.d78078a6.css.map","main.js":"static/js/main.84ebb0e7.js","main.js.map":"static/js/main.84ebb0e7.js.map","static/js/0.da444e09.chunk.js":"static/js/0.da444e09.chunk.js","static/js/0.da444e09.chunk.js.map":"static/js/0.da444e09.chunk.js.map","static/js/1.c1582bf1.chunk.js":"static/js/1.c1582bf1.chunk.js","static/js/1.c1582bf1.chunk.js.map":"static/js/1.c1582bf1.chunk.js.map"}
+module.exports = {"main.css":"static/css/main.d78078a6.css","main.css.map":"static/css/main.d78078a6.css.map","main.js":"static/js/main.98ce81b3.js","main.js.map":"static/js/main.98ce81b3.js.map","static/js/0.92a72b61.chunk.js":"static/js/0.92a72b61.chunk.js","static/js/0.92a72b61.chunk.js.map":"static/js/0.92a72b61.chunk.js.map","static/js/1.4b4e8f2c.chunk.js":"static/js/1.4b4e8f2c.chunk.js","static/js/1.4b4e8f2c.chunk.js.map":"static/js/1.4b4e8f2c.chunk.js.map"}
 
 /***/ }),
 /* 48 */

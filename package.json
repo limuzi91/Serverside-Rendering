@@ -72,10 +72,11 @@
   },
   "scripts": {
     "start": "node server.js",
+    "startfrontend": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "server": "NODE_ENV=test webpack -w & nodemon server.js",
-    "dev": "concurrently \"npm run server\" \"npm start\"",
+    "dev": "concurrently \"npm run server\" \"npm run startfrontend\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
   },
   "jest": {

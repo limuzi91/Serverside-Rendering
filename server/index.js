@@ -1,6 +1,5 @@
 import express from "express";
 import renderer from "./helpers/renderer";
-//import rendererWithoutRedux from './helpers/renderer'
 import serverStore from "../src/store/serverStore";
 //import { matchRoutes } from "react-router-config";
 import { matchPath } from "react-router-dom";
@@ -73,7 +72,7 @@ app.get("*", (request, response, next) => {
   });
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log(`Server is listening on port: ${port}`);
