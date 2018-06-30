@@ -15,9 +15,11 @@ export const fetchCommentsSuccess = comments => ({
 
 export const fetchComments = () => {
   return dispatch => {
-    axios.get("http://jsonplaceholder.typicode.com/comments").then(response => {
-      //console.log(response.data.slice(0, 50));
-      dispatch(fetchCommentsSuccess(response.data.slice(0, 50)));
-    });
+    axios
+      .get("https://jsonplaceholder.typicode.com/comments")
+      .then(response => {
+        //console.log(response.data.slice(0, 50));
+        dispatch(fetchCommentsSuccess(response.data.slice(0, 50)));
+      });
   };
 };

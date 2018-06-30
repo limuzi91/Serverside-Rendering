@@ -1207,7 +1207,7 @@ const fetchCommentsSuccess = exports.fetchCommentsSuccess = comments => ({
 
 const fetchComments = exports.fetchComments = () => {
   return dispatch => {
-    _axios2.default.get("http://jsonplaceholder.typicode.com/comments").then(response => {
+    _axios2.default.get("https://jsonplaceholder.typicode.com/comments").then(response => {
       //console.log(response.data.slice(0, 50));
       dispatch(fetchCommentsSuccess(response.data.slice(0, 50)));
     });
