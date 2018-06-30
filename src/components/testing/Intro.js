@@ -8,14 +8,14 @@ class Intro extends Component {
 
         <img
           style={{ margin: "40px 0" }}
-          src="/assets/images/testing.png"
+          src="/assets/images/testing.jpg"
           alt=""
           className="mx-auto d-block img-thumbnail img-fluid"
         />
 
         <img
           style={{ margin: "40px 0" }}
-          src="/assets/images/testingtwo.png"
+          src="/assets/images/testingtwo.jpg"
           alt=""
           className="mx-auto d-block img-thumbnail img-fluid"
         />

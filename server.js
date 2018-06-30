@@ -542,10 +542,10 @@ app.get("*", (request, response, next) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port: ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server is listening on port: ${port}`);
 });
 
 /***/ }),
@@ -2230,7 +2230,7 @@ class Intro extends _react.Component {
       ),
       _react2.default.createElement("img", {
         style: { margin: "40px 0" },
-        src: "/assets/images/testing.png",
+        src: "/assets/images/testing.jpg",
         alt: "",
         className: "mx-auto d-block img-thumbnail img-fluid",
         __source: {
@@ -2241,7 +2241,7 @@ class Intro extends _react.Component {
       }),
       _react2.default.createElement("img", {
         style: { margin: "40px 0" },
-        src: "/assets/images/testingtwo.png",
+        src: "/assets/images/testingtwo.jpg",
         alt: "",
         className: "mx-auto d-block img-thumbnail img-fluid",
         __source: {
@@ -3709,7 +3709,7 @@ exports.default = ServerRedux;
 /* 47 */
 /***/ (function(module, exports) {
 
-module.exports = {"main.css":"static/css/main.d78078a6.css","main.css.map":"static/css/main.d78078a6.css.map","main.js":"static/js/main.b2745fa5.js","main.js.map":"static/js/main.b2745fa5.js.map","static/js/0.0a7796f8.chunk.js":"static/js/0.0a7796f8.chunk.js","static/js/0.0a7796f8.chunk.js.map":"static/js/0.0a7796f8.chunk.js.map","static/js/1.50fc4a72.chunk.js":"static/js/1.50fc4a72.chunk.js","static/js/1.50fc4a72.chunk.js.map":"static/js/1.50fc4a72.chunk.js.map"}
+module.exports = {"main.css":"static/css/main.d78078a6.css","main.css.map":"static/css/main.d78078a6.css.map","main.js":"static/js/main.84ebb0e7.js","main.js.map":"static/js/main.84ebb0e7.js.map","static/js/0.da444e09.chunk.js":"static/js/0.da444e09.chunk.js","static/js/0.da444e09.chunk.js.map":"static/js/0.da444e09.chunk.js.map","static/js/1.c1582bf1.chunk.js":"static/js/1.c1582bf1.chunk.js","static/js/1.c1582bf1.chunk.js.map":"static/js/1.c1582bf1.chunk.js.map"}
 
 /***/ }),
 /* 48 */
