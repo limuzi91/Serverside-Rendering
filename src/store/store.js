@@ -5,7 +5,10 @@ import jsList from "./reducers/javascript";
 import searchTermFilter from "./reducers/searchTermFilter";
 import comments from "./reducers/comments";
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers =
+  process.env.NODE_ENV === "development"
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : null || compose;
 
 const rootReducer = combineReducers({
   javaList,

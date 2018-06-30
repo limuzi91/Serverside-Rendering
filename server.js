@@ -1824,7 +1824,7 @@ class SearchPage extends _react.Component {
       this.setState({
         loading: true
       });
-      console.log(this.props.match.params.id);
+      //console.log(this.props.match.params.id);
       this.props.loadLocalData(this.props.match.params.id).then(repos => this.setState(() => ({
         repos,
         loading: false
@@ -3969,7 +3969,7 @@ exports.default = ServerRedux;
 /* 47 */
 /***/ (function(module, exports) {
 
-module.exports = {"main.css":"static/css/main.d78078a6.css","main.css.map":"static/css/main.d78078a6.css.map","main.js":"static/js/main.98ce81b3.js","main.js.map":"static/js/main.98ce81b3.js.map","static/js/0.92a72b61.chunk.js":"static/js/0.92a72b61.chunk.js","static/js/0.92a72b61.chunk.js.map":"static/js/0.92a72b61.chunk.js.map","static/js/1.4b4e8f2c.chunk.js":"static/js/1.4b4e8f2c.chunk.js","static/js/1.4b4e8f2c.chunk.js.map":"static/js/1.4b4e8f2c.chunk.js.map"}
+module.exports = {"main.css":"static/css/main.d78078a6.css","main.css.map":"static/css/main.d78078a6.css.map","main.js":"static/js/main.fa1ce707.js","main.js.map":"static/js/main.fa1ce707.js.map","static/js/0.92a72b61.chunk.js":"static/js/0.92a72b61.chunk.js","static/js/0.92a72b61.chunk.js.map":"static/js/0.92a72b61.chunk.js.map","static/js/1.4b4e8f2c.chunk.js":"static/js/1.4b4e8f2c.chunk.js","static/js/1.4b4e8f2c.chunk.js.map":"static/js/1.4b4e8f2c.chunk.js.map"}
 
 /***/ }),
 /* 48 */

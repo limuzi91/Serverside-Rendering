@@ -33,7 +33,7 @@ class SearchPage extends Component {
       this.setState({
         loading: true
       });
-      console.log(this.props.match.params.id);
+      //console.log(this.props.match.params.id);
       this.props.loadLocalData(this.props.match.params.id).then(repos =>
         this.setState(() => ({
           repos,
