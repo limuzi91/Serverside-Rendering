@@ -41,7 +41,9 @@ class HomePage extends Component {
           style={{ minHeight: "100vh", marginTop: "-100px" }}
         >
           <div>
-            <h4 className="font-weight-light">A Demo project that showcases</h4>
+            <h4 className="font-weight-light">
+              test A Demo project that showcases
+            </h4>
             <h4 className="display-4 mb-5">
               <small>
                 Serverside Rendering + ServerSide Redux + CodeSplitting /
