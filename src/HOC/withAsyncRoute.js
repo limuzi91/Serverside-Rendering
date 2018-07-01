@@ -17,13 +17,7 @@ const withAsyncRoute = importComponent => {
     render() {
       const C = this.state.component;
 
-      return C ? (
-        <C {...this.props} />
-      ) : (
-        <div>
-          <h1>Async Route is loading...</h1>
-        </div>
-      );
+      return C ? <C {...this.props} /> : null;
     }
   };
 };

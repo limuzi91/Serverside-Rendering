@@ -238,7 +238,23 @@ exports.default = (array, searchTerm = "") => {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "/Users/muzili/Desktop/workingfolder/myssrdemo/src/components/ListItem.js";
+var _jsxFileName = "/Users/muzili/Desktop/workingfolder/myssrdemo/src/components/ListItem.js"; // import React from "react";
+
+// export default ({ name, owner, stargazers_count, html_url }) => {
+//   return (
+//     <li key={name} style={{ margin: 30 }}>
+//       <ul>
+//         <li>
+//           <a href={html_url} target="_blank">
+//             {name}
+//           </a>
+//         </li>
+//         <li>@{owner.login}</li>
+//         <li>{stargazers_count} stars</li>
+//       </ul>
+//     </li>
+//   );
+// };
 
 var _react = __webpack_require__(0);
 
@@ -246,71 +262,83 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = ({ name, owner, stargazers_count, html_url }) => {
-  return _react2.default.createElement(
-    "li",
-    { key: name, style: { margin: 30 }, __source: {
-        fileName: _jsxFileName,
-        lineNumber: 5
-      },
-      __self: undefined
-    },
-    _react2.default.createElement(
-      "ul",
-      {
-        __source: {
+class ListItem extends _react.Component {
+  shouldComponentUpdate() {
+    return false;
+  }
+  render() {
+    var _props = this.props;
+    const name = _props.name,
+          owner = _props.owner,
+          stargazers_count = _props.stargazers_count,
+          html_url = _props.html_url;
+
+    return _react2.default.createElement(
+      "li",
+      { key: name, style: { margin: 30 }, __source: {
           fileName: _jsxFileName,
-          lineNumber: 6
+          lineNumber: 28
         },
-        __self: undefined
+        __self: this
       },
       _react2.default.createElement(
-        "li",
+        "ul",
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 7
+            lineNumber: 29
           },
-          __self: undefined
+          __self: this
         },
         _react2.default.createElement(
-          "a",
-          { href: html_url, target: "_blank", __source: {
+          "li",
+          {
+            __source: {
               fileName: _jsxFileName,
-              lineNumber: 8
+              lineNumber: 30
             },
-            __self: undefined
+            __self: this
           },
-          name
+          _react2.default.createElement(
+            "a",
+            { href: html_url, target: "_blank", __source: {
+                fileName: _jsxFileName,
+                lineNumber: 31
+              },
+              __self: this
+            },
+            name
+          )
+        ),
+        _react2.default.createElement(
+          "li",
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 35
+            },
+            __self: this
+          },
+          "@",
+          owner.login
+        ),
+        _react2.default.createElement(
+          "li",
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 36
+            },
+            __self: this
+          },
+          stargazers_count,
+          " stars"
         )
-      ),
-      _react2.default.createElement(
-        "li",
-        {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 12
-          },
-          __self: undefined
-        },
-        "@",
-        owner.login
-      ),
-      _react2.default.createElement(
-        "li",
-        {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 13
-          },
-          __self: undefined
-        },
-        stargazers_count,
-        " stars"
       )
-    )
-  );
-};
+    );
+  }
+}
+exports.default = ListItem;
 
 /***/ }),
 /* 9 */
@@ -2564,30 +2592,10 @@ const withAsyncRoute = importComponent => {
       return C ? _react2.default.createElement(C, Object.assign({}, this.props, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 20
         },
         __self: this
-      })) : _react2.default.createElement(
-        "div",
-        {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 23
-          },
-          __self: this
-        },
-        _react2.default.createElement(
-          "h1",
-          {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 24
-            },
-            __self: this
-          },
-          "Async Route is loading..."
-        )
-      );
+      })) : null;
     }
   };
 };
