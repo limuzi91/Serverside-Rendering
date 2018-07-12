@@ -3712,7 +3712,7 @@ class UserHref extends _react.Component {
           },
           __self: this
         },
-        _xssFilters2.default.uriInHTMLData(this.state.linkTwo)
+        this.state.linkTwo
       ),
       _react2.default.createElement(
         "div",
@@ -3977,7 +3977,7 @@ exports.default = ServerRedux;
 /* 47 */
 /***/ (function(module, exports) {
 
-module.exports = {"main.css":"static/css/main.d78078a6.css","main.css.map":"static/css/main.d78078a6.css.map","main.js":"static/js/main.f2635339.js","main.js.map":"static/js/main.f2635339.js.map","static/js/0.92a72b61.chunk.js":"static/js/0.92a72b61.chunk.js","static/js/0.92a72b61.chunk.js.map":"static/js/0.92a72b61.chunk.js.map","static/js/1.4b4e8f2c.chunk.js":"static/js/1.4b4e8f2c.chunk.js","static/js/1.4b4e8f2c.chunk.js.map":"static/js/1.4b4e8f2c.chunk.js.map"}
+module.exports = {"main.css":"static/css/main.d78078a6.css","main.css.map":"static/css/main.d78078a6.css.map","main.js":"static/js/main.1ca15916.js","main.js.map":"static/js/main.1ca15916.js.map","static/js/0.b4d360ed.chunk.js":"static/js/0.b4d360ed.chunk.js","static/js/0.b4d360ed.chunk.js.map":"static/js/0.b4d360ed.chunk.js.map","static/js/1.4b4e8f2c.chunk.js":"static/js/1.4b4e8f2c.chunk.js","static/js/1.4b4e8f2c.chunk.js.map":"static/js/1.4b4e8f2c.chunk.js.map"}
 
 /***/ }),
 /* 48 */

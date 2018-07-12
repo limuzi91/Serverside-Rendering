@@ -68,7 +68,7 @@ class UserHref extends Component {
           target="_blank"
           href={prependHttp(xssFilters.uriInUnQuotedAttr(this.state.linkTwo))}
         >
-          {xssFilters.uriInHTMLData(this.state.linkTwo)}
+          {this.state.linkTwo}
         </a>
         <div className=" mb-3 mt-4" style={{ position: "relative" }}>
           <input
