@@ -3,8 +3,10 @@ import renderer from "./helpers/renderer";
 import serverStore from "../src/store/serverStore";
 //import { matchRoutes } from "react-router-config";
 import { matchPath } from "react-router-dom";
+
 import routes from "../src/routes";
 import cors from "cors";
+const compression = require("compression");
 const bodyParser = require("body-parser");
 const path = require("path");
 
@@ -18,6 +20,10 @@ app.get("/api/test", (request, response) => {
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
+
+///compress
+app.use(compression());
+
 // set static folder
 app.use(express.static(path.resolve("build")));
 app.get("*", (request, response, next) => {

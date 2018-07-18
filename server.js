@@ -512,10 +512,11 @@ var _cors2 = _interopRequireDefault(_cors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const bodyParser = __webpack_require__(58);
+const compression = __webpack_require__(58);
 //import { matchRoutes } from "react-router-config";
 
-const path = __webpack_require__(59);
+const bodyParser = __webpack_require__(59);
+const path = __webpack_require__(60);
 
 const app = (0, _express2.default)();
 
@@ -527,6 +528,10 @@ app.get("/api/test", (request, response) => {
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
+
+///compress
+app.use(compression());
+
 // set static folder
 app.use(_express2.default.static(path.resolve("build")));
 app.get("*", (request, response, next) => {
@@ -4236,10 +4241,16 @@ module.exports = require("cors");
 /* 58 */
 /***/ (function(module, exports) {
 
-module.exports = require("body-parser");
+module.exports = require("compression");
 
 /***/ }),
 /* 59 */
+/***/ (function(module, exports) {
+
+module.exports = require("body-parser");
+
+/***/ }),
+/* 60 */
 /***/ (function(module, exports) {
 
 module.exports = require("path");
