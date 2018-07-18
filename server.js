@@ -1524,6 +1524,7 @@ class HomePage extends _react.Component {
               {
                 href: "https://github.com/limuzi91/Serverside-Rendering",
                 target: "_blank",
+                rel: "noopener noreferrer",
                 className: "btn btn-primary",
                 __source: {
                   fileName: _jsxFileName,
@@ -1538,7 +1539,7 @@ class HomePage extends _react.Component {
       ),
       _react2.default.createElement("div", { style: { height: 200 }, __source: {
           fileName: _jsxFileName,
-          lineNumber: 108
+          lineNumber: 109
         },
         __self: this
       })
