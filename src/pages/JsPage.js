@@ -3,14 +3,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../store/actions";
 import { Helmet } from "react-helmet";
+import { fromJS, is } from "immutable";
 import ListItem from "../components/ListItem";
-import searchReposFilter from "../selectors/searchReposFilter";
+import { searchReposFilterWithCache } from "../selectors/searchReposFilter";
 
 const mapStateToProps = state => ({
-  jsListAfterFilter: searchReposFilter(
-    state.jsList.jsList,
-    state.searchTermFilter.searchTerm
-  ),
+  jsListAfterFilter: searchReposFilterWithCache(
+    state => state.jsList.jsList,
+    state => state.searchTermFilter.searchTerm
+  )(state),
   ...state.jsList
 });
 
@@ -54,6 +55,22 @@ class JsPage extends Component {
     if (!this.props.jsList) {
       this.props.onFetchJavascript();
     }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    const $$thisProps = fromJS(this.props || {});
+    const $$nextProps = fromJS(nextProps || {});
+    const $$thisState = fromJS(this.state || {});
+    const $$nextState = fromJS(nextState || {});
+    // console.log("thisProps", this.props || {});
+    // console.log("nextProps", nextProps || {});
+
+    // console.log(!is($$thisProps, $$nextProps));
+
+    return !is($$thisProps, $$nextProps) || !is($$thisState, $$nextState);
+  }
+  componentDidUpdate() {
+    console.log("updated!");
   }
 
   head = () => {

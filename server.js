@@ -219,13 +219,20 @@ function fetchPopularRepos(language = "all") {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.searchReposFilterWithCache = exports.searchReposFilter = undefined;
 
-exports.default = (array, searchTerm = "") => {
+var _reselect = __webpack_require__(59);
+
+const searchReposFilter = exports.searchReposFilter = (array, searchTerm = "") => {
   let reposArray = [];
   if (array) {
     reposArray = array;
   }
   return reposArray.filter(item => `${item.name ? item.name : item} ${item.owner ? item.owner.login : " "} `.toUpperCase().indexOf(searchTerm.trim().toUpperCase()) >= 0);
+};
+
+const searchReposFilterWithCache = exports.searchReposFilterWithCache = (getList, getSearchTerm) => {
+  return (0, _reselect.createSelector)([getList, getSearchTerm], searchReposFilter);
 };
 
 /***/ }),
@@ -369,19 +376,19 @@ var _JsPage = __webpack_require__(25);
 
 var _JsPage2 = _interopRequireDefault(_JsPage);
 
-var _SearchPage = __webpack_require__(26);
+var _SearchPage = __webpack_require__(27);
 
 var _SearchPage2 = _interopRequireDefault(_SearchPage);
 
-var _TestingPage = __webpack_require__(29);
+var _TestingPage = __webpack_require__(30);
 
 var _TestingPage2 = _interopRequireDefault(_TestingPage);
 
-var _NotFoundPage = __webpack_require__(34);
+var _NotFoundPage = __webpack_require__(35);
 
 var _NotFoundPage2 = _interopRequireDefault(_NotFoundPage);
 
-var _withAsyncRoute = __webpack_require__(35);
+var _withAsyncRoute = __webpack_require__(36);
 
 var _withAsyncRoute2 = _interopRequireDefault(_withAsyncRoute);
 
@@ -395,13 +402,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //import XssPage from "./pages/XssPage";
 const asyncJavaPage = (0, _withAsyncRoute2.default)(() => {
-  return Promise.resolve().then(() => __webpack_require__(36));
+  return Promise.resolve().then(() => __webpack_require__(37));
 });
 //import JavaPage from "./pages/JavaPage";
 
 
 const asyncXssPage = (0, _withAsyncRoute2.default)(() => {
-  return Promise.resolve().then(() => __webpack_require__(37));
+  return Promise.resolve().then(() => __webpack_require__(38));
 });
 
 const loadJsData = store => {
@@ -489,7 +496,7 @@ var _renderer = __webpack_require__(15);
 
 var _renderer2 = _interopRequireDefault(_renderer);
 
-var _serverStore = __webpack_require__(48);
+var _serverStore = __webpack_require__(49);
 
 var _serverStore2 = _interopRequireDefault(_serverStore);
 
@@ -499,16 +506,16 @@ var _routes = __webpack_require__(10);
 
 var _routes2 = _interopRequireDefault(_routes);
 
-var _cors = __webpack_require__(55);
+var _cors = __webpack_require__(56);
 
 var _cors2 = _interopRequireDefault(_cors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const bodyParser = __webpack_require__(56);
+const bodyParser = __webpack_require__(57);
 //import { matchRoutes } from "react-router-config";
 
-const path = __webpack_require__(57);
+const path = __webpack_require__(58);
 
 const app = (0, _express2.default)();
 
@@ -613,7 +620,7 @@ var _routes = __webpack_require__(10);
 
 var _routes2 = _interopRequireDefault(_routes);
 
-var _assetManifest = __webpack_require__(47);
+var _assetManifest = __webpack_require__(48);
 
 var _assetManifest2 = _interopRequireDefault(_assetManifest);
 
@@ -1567,20 +1574,20 @@ var actions = _interopRequireWildcard(_actions);
 
 var _reactHelmet = __webpack_require__(2);
 
+var _immutable = __webpack_require__(26);
+
 var _ListItem = __webpack_require__(8);
 
 var _ListItem2 = _interopRequireDefault(_ListItem);
 
 var _searchReposFilter = __webpack_require__(7);
 
-var _searchReposFilter2 = _interopRequireDefault(_searchReposFilter);
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const mapStateToProps = state => Object.assign({
-  jsListAfterFilter: (0, _searchReposFilter2.default)(state.jsList.jsList, state.searchTermFilter.searchTerm)
+  jsListAfterFilter: (0, _searchReposFilter.searchReposFilterWithCache)(state => state.jsList.jsList, state => state.searchTermFilter.searchTerm)(state)
 }, state.jsList);
 
 const mapDispatchToProps = dispatch => ({
@@ -1612,7 +1619,7 @@ class JsPage extends _react.Component {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 61
+            lineNumber: 78
           },
           __self: this
         },
@@ -1621,7 +1628,7 @@ class JsPage extends _react.Component {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 62
+              lineNumber: 79
             },
             __self: this
           },
@@ -1632,7 +1639,7 @@ class JsPage extends _react.Component {
           content: "Popular Javascript repos on github",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 63
+            lineNumber: 80
           },
           __self: this
         })
@@ -1658,6 +1665,22 @@ class JsPage extends _react.Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    const $$thisProps = (0, _immutable.fromJS)(this.props || {});
+    const $$nextProps = (0, _immutable.fromJS)(nextProps || {});
+    const $$thisState = (0, _immutable.fromJS)(this.state || {});
+    const $$nextState = (0, _immutable.fromJS)(nextState || {});
+    // console.log("thisProps", this.props || {});
+    // console.log("nextProps", nextProps || {});
+
+    // console.log(!is($$thisProps, $$nextProps));
+
+    return !(0, _immutable.is)($$thisProps, $$nextProps) || !(0, _immutable.is)($$thisState, $$nextState);
+  }
+  componentDidUpdate() {
+    console.log("updated!");
+  }
+
   render() {
     const loading = this.props.loading;
 
@@ -1668,7 +1691,7 @@ class JsPage extends _react.Component {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 75
+            lineNumber: 92
           },
           __self: this
         },
@@ -1681,7 +1704,7 @@ class JsPage extends _react.Component {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 78
+            lineNumber: 95
           },
           __self: this
         },
@@ -1693,7 +1716,7 @@ class JsPage extends _react.Component {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 81
+          lineNumber: 98
         },
         __self: this
       },
@@ -1703,7 +1726,7 @@ class JsPage extends _react.Component {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 83
+            lineNumber: 100
           },
           __self: this
         },
@@ -1714,7 +1737,7 @@ class JsPage extends _react.Component {
           className: "mx-auto d-block img-thumbnail img-fluid",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 84
+            lineNumber: 101
           },
           __self: this
         }),
@@ -1722,7 +1745,7 @@ class JsPage extends _react.Component {
           "h3",
           { style: { textAlign: "center", marginTop: 30 }, __source: {
               fileName: _jsxFileName,
-              lineNumber: 90
+              lineNumber: 107
             },
             __self: this
           },
@@ -1732,7 +1755,7 @@ class JsPage extends _react.Component {
           "ul",
           { style: { display: "flex", flexWrap: "wrap" }, __source: {
               fileName: _jsxFileName,
-              lineNumber: 93
+              lineNumber: 110
             },
             __self: this
           },
@@ -1744,7 +1767,7 @@ class JsPage extends _react.Component {
             html_url: html_url,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 95
+              lineNumber: 112
             },
             __self: this
           }))
@@ -1758,6 +1781,12 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
 
 /***/ }),
 /* 26 */
+/***/ (function(module, exports) {
+
+module.exports = require("immutable");
+
+/***/ }),
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1772,13 +1801,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _withLoadLocalData = __webpack_require__(27);
+var _withLoadLocalData = __webpack_require__(28);
 
 var _withLoadLocalData2 = _interopRequireDefault(_withLoadLocalData);
 
 var _searchReposFilter = __webpack_require__(7);
-
-var _searchReposFilter2 = _interopRequireDefault(_searchReposFilter);
 
 var _reactRedux = __webpack_require__(3);
 
@@ -1786,7 +1813,7 @@ var _ListItem = __webpack_require__(8);
 
 var _ListItem2 = _interopRequireDefault(_ListItem);
 
-var _isBrowser = __webpack_require__(28);
+var _isBrowser = __webpack_require__(29);
 
 var _isBrowser2 = _interopRequireDefault(_isBrowser);
 
@@ -1863,7 +1890,7 @@ class SearchPage extends _react.Component {
   render() {
     const loading = this.state.loading;
 
-    const repos = (0, _searchReposFilter2.default)(this.state.repos, this.props.searchTerm);
+    const repos = (0, _searchReposFilter.searchReposFilter)(this.state.repos, this.props.searchTerm);
 
     if (loading === true || !repos) {
       return _react2.default.createElement(
@@ -1949,7 +1976,7 @@ class SearchPage extends _react.Component {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)((0, _withLoadLocalData2.default)(SearchPage));
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1992,13 +2019,13 @@ const withLoadLocalData = WrappedComponent => {
 exports.default = withLoadLocalData;
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports) {
 
 module.exports = require("is-browser");
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2013,11 +2040,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _App = __webpack_require__(30);
+var _App = __webpack_require__(31);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _Intro = __webpack_require__(33);
+var _Intro = __webpack_require__(34);
 
 var _Intro2 = _interopRequireDefault(_Intro);
 
@@ -2112,7 +2139,7 @@ class TestingPage extends _react.Component {
 exports.default = TestingPage;
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2127,11 +2154,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _CommentBox = __webpack_require__(31);
+var _CommentBox = __webpack_require__(32);
 
 var _CommentBox2 = _interopRequireDefault(_CommentBox);
 
-var _CommentList = __webpack_require__(32);
+var _CommentList = __webpack_require__(33);
 
 var _CommentList2 = _interopRequireDefault(_CommentList);
 
@@ -2207,7 +2234,7 @@ exports.default = () => {
 };
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2334,7 +2361,7 @@ class CommentBox extends _react.Component {
 exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(CommentBox);
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2353,12 +2380,10 @@ var _reactRedux = __webpack_require__(3);
 
 var _searchReposFilter = __webpack_require__(7);
 
-var _searchReposFilter2 = _interopRequireDefault(_searchReposFilter);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const mapStateToProps = state => ({
-  comments: (0, _searchReposFilter2.default)(state.comments, state.searchTermFilter.searchTerm)
+  comments: (0, _searchReposFilter.searchReposFilter)(state.comments, state.searchTermFilter.searchTerm)
 });
 
 class CommentList extends _react.Component {
@@ -2388,7 +2413,7 @@ class CommentList extends _react.Component {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(CommentList);
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2455,7 +2480,7 @@ class Intro extends _react.Component {
 exports.default = Intro;
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2551,7 +2576,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2603,7 +2628,7 @@ const withAsyncRoute = importComponent => {
 exports.default = withAsyncRoute;
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2632,14 +2657,18 @@ var _ListItem2 = _interopRequireDefault(_ListItem);
 
 var _searchReposFilter = __webpack_require__(7);
 
-var _searchReposFilter2 = _interopRequireDefault(_searchReposFilter);
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const mapStateToProps = state => Object.assign({
-  javaListAfterFilter: (0, _searchReposFilter2.default)(state.javaList.javaList, state.searchTermFilter.searchTerm)
+  // javaListAfterFilter: searchReposFilter(
+  //   state.javaList.javaList,
+  //   state.searchTermFilter.searchTerm
+  // )
+
+  javaListAfterFilter: (0, _searchReposFilter.searchReposFilterWithCache)(state => state.javaList.javaList, state => state.searchTermFilter.searchTerm)(state)
+
 }, state.javaList);
 
 const mapDispatchToProps = dispatch => ({
@@ -2671,7 +2700,7 @@ class JavaPage extends _react.Component {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 61
+            lineNumber: 68
           },
           __self: this
         },
@@ -2680,7 +2709,7 @@ class JavaPage extends _react.Component {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 62
+              lineNumber: 69
             },
             __self: this
           },
@@ -2688,7 +2717,7 @@ class JavaPage extends _react.Component {
         ),
         _react2.default.createElement("meta", { property: "og:title", content: "Popular Java repos on github", __source: {
             fileName: _jsxFileName,
-            lineNumber: 63
+            lineNumber: 70
           },
           __self: this
         })
@@ -2724,7 +2753,7 @@ class JavaPage extends _react.Component {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 72
+            lineNumber: 79
           },
           __self: this
         },
@@ -2737,7 +2766,7 @@ class JavaPage extends _react.Component {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 75
+            lineNumber: 82
           },
           __self: this
         },
@@ -2749,7 +2778,7 @@ class JavaPage extends _react.Component {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 78
+          lineNumber: 85
         },
         __self: this
       },
@@ -2758,7 +2787,7 @@ class JavaPage extends _react.Component {
         "div",
         { className: "container", __source: {
             fileName: _jsxFileName,
-            lineNumber: 81
+            lineNumber: 88
           },
           __self: this
         },
@@ -2769,7 +2798,7 @@ class JavaPage extends _react.Component {
           className: "mx-auto d-block img-thumbnail img-fluid",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 82
+            lineNumber: 89
           },
           __self: this
         }),
@@ -2777,7 +2806,7 @@ class JavaPage extends _react.Component {
           "h3",
           { style: { textAlign: "center", marginTop: 30 }, __source: {
               fileName: _jsxFileName,
-              lineNumber: 88
+              lineNumber: 95
             },
             __self: this
           },
@@ -2787,7 +2816,7 @@ class JavaPage extends _react.Component {
           "ul",
           { style: { display: "flex", flexWrap: "wrap" }, __source: {
               fileName: _jsxFileName,
-              lineNumber: 92
+              lineNumber: 99
             },
             __self: this
           },
@@ -2799,7 +2828,7 @@ class JavaPage extends _react.Component {
             html_url: html_url,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 94
+              lineNumber: 101
             },
             __self: this
           }))
@@ -2812,7 +2841,7 @@ class JavaPage extends _react.Component {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(JavaPage);
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2827,23 +2856,23 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _EscapeInput = __webpack_require__(38);
+var _EscapeInput = __webpack_require__(39);
 
 var _EscapeInput2 = _interopRequireDefault(_EscapeInput);
 
-var _DangerousHTML = __webpack_require__(39);
+var _DangerousHTML = __webpack_require__(40);
 
 var _DangerousHTML2 = _interopRequireDefault(_DangerousHTML);
 
-var _SanitizeCode = __webpack_require__(40);
+var _SanitizeCode = __webpack_require__(41);
 
 var _SanitizeCode2 = _interopRequireDefault(_SanitizeCode);
 
-var _UserHref = __webpack_require__(42);
+var _UserHref = __webpack_require__(43);
 
 var _UserHref2 = _interopRequireDefault(_UserHref);
 
-var _ServerRedux = __webpack_require__(46);
+var _ServerRedux = __webpack_require__(47);
 
 var _ServerRedux2 = _interopRequireDefault(_ServerRedux);
 
@@ -3000,7 +3029,7 @@ class XssPage extends _react.Component {
 exports.default = XssPage;
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3177,7 +3206,7 @@ class EscapeInput extends _react.Component {
 exports.default = EscapeInput;
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3332,7 +3361,7 @@ class DangerousHTML extends _react.Component {
 exports.default = DangerousHTML;
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3347,7 +3376,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _dompurify = __webpack_require__(41);
+var _dompurify = __webpack_require__(42);
 
 var _dompurify2 = _interopRequireDefault(_dompurify);
 
@@ -3502,13 +3531,13 @@ class SanitizeCode extends _react.Component {
 exports.default = SanitizeCode;
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports) {
 
 module.exports = require("dompurify");
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3523,11 +3552,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _xssFilters = __webpack_require__(43);
+var _xssFilters = __webpack_require__(44);
 
 var _xssFilters2 = _interopRequireDefault(_xssFilters);
 
-var _isURL = __webpack_require__(44);
+var _isURL = __webpack_require__(45);
 
 var _isURL2 = _interopRequireDefault(_isURL);
 
@@ -3535,7 +3564,7 @@ var _classnames = __webpack_require__(12);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _prependHttp = __webpack_require__(45);
+var _prependHttp = __webpack_require__(46);
 
 var _prependHttp2 = _interopRequireDefault(_prependHttp);
 
@@ -3791,19 +3820,19 @@ class UserHref extends _react.Component {
 exports.default = UserHref;
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports) {
 
 module.exports = require("xss-filters");
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports) {
 
 module.exports = require("validator/lib/isURL");
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3825,7 +3854,7 @@ module.exports = (url, opts) => {
 };
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3974,13 +4003,13 @@ class ServerRedux extends _react.Component {
 exports.default = ServerRedux;
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports) {
 
 module.exports = {"main.css":"static/css/main.d78078a6.css","main.css.map":"static/css/main.d78078a6.css.map","main.js":"static/js/main.1ca15916.js","main.js.map":"static/js/main.1ca15916.js.map","static/js/0.b4d360ed.chunk.js":"static/js/0.b4d360ed.chunk.js","static/js/0.b4d360ed.chunk.js.map":"static/js/0.b4d360ed.chunk.js.map","static/js/1.4b4e8f2c.chunk.js":"static/js/1.4b4e8f2c.chunk.js","static/js/1.4b4e8f2c.chunk.js.map":"static/js/1.4b4e8f2c.chunk.js.map"}
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3990,25 +4019,25 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _redux = __webpack_require__(49);
+var _redux = __webpack_require__(50);
 
-var _reduxThunk = __webpack_require__(50);
+var _reduxThunk = __webpack_require__(51);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _java = __webpack_require__(51);
+var _java = __webpack_require__(52);
 
 var _java2 = _interopRequireDefault(_java);
 
-var _javascript = __webpack_require__(52);
+var _javascript = __webpack_require__(53);
 
 var _javascript2 = _interopRequireDefault(_javascript);
 
-var _searchTermFilter = __webpack_require__(53);
+var _searchTermFilter = __webpack_require__(54);
 
 var _searchTermFilter2 = _interopRequireDefault(_searchTermFilter);
 
-var _comments = __webpack_require__(54);
+var _comments = __webpack_require__(55);
 
 var _comments2 = _interopRequireDefault(_comments);
 
@@ -4032,19 +4061,19 @@ const serverStore = () => {
 exports.default = serverStore;
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-thunk");
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4086,7 +4115,7 @@ const reducer = (state = initialState, action) => {
 exports.default = reducer;
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4128,7 +4157,7 @@ const reducer = (state = initialState, action) => {
 exports.default = reducer;
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4166,7 +4195,7 @@ exports.default = (state = initialState, action) => {
 };
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4191,22 +4220,28 @@ exports.default = function (state = [], action) {
 var _actionTypes = __webpack_require__(1);
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports) {
 
 module.exports = require("cors");
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports) {
 
 module.exports = require("path");
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports) {
+
+module.exports = require("reselect");
 
 /***/ })
 /******/ ]);

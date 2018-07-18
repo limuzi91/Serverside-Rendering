@@ -4,13 +4,20 @@ import { connect } from "react-redux";
 import * as actions from "../store/actions";
 import { Helmet } from "react-helmet";
 import ListItem from "../components/ListItem";
-import searchReposFilter from "../selectors/searchReposFilter";
+import { searchReposFilterWithCache } from "../selectors/searchReposFilter";
 
 const mapStateToProps = state => ({
-  javaListAfterFilter: searchReposFilter(
-    state.javaList.javaList,
-    state.searchTermFilter.searchTerm
-  ),
+  // javaListAfterFilter: searchReposFilter(
+  //   state.javaList.javaList,
+  //   state.searchTermFilter.searchTerm
+  // )
+
+  javaListAfterFilter: searchReposFilterWithCache(
+    state => state.javaList.javaList,
+
+    state => state.searchTermFilter.searchTerm
+  )(state),
+
   ...state.javaList
 });
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import searchReposFilter from "../../selectors/searchReposFilter";
+import { searchReposFilter } from "../../selectors/searchReposFilter";
 
 const mapStateToProps = state => ({
   comments: searchReposFilter(state.comments, state.searchTermFilter.searchTerm)

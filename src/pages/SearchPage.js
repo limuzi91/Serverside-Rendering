@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import withLoadLocalData from "../HOC/withLoadLocalData";
-import searchReposFilter from "../selectors/searchReposFilter";
+import { searchReposFilter } from "../selectors/searchReposFilter";
 import { connect } from "react-redux";
 import ListItem from "../components/ListItem";
 import isBrowser from "is-browser";
