@@ -98,6 +98,7 @@ class HomePage extends Component {
               <a
                 href="https://github.com/limuzi91/Serverside-Rendering"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-primary"
               >
                 View Source Code
